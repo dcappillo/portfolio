@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derek Cappillo — Researcher. Problem Solver. Educator</title>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B8BK2KGKX6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-B8BK2KGKX6');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,600;0,900;1,300;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0b14;
+    --surface: #141020;
+    --surface2: #1c1728;
+    --border: #2d2540;
+    --text: #e4e0f0;
+    --text-muted: #6b6480;
+    --text-dim: #9b96b0;
+    --accent: #a98fd4;
+    --accent-dim: rgba(169,143,212,0.12);
+    --accent-glow: rgba(169,143,212,0.06);
+    --red: #c85a5a;
+    --green: #6aaa7a;
+    --radius: 4px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.4;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s;
+    background: rgba(13,11,20,0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(169,143,212,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--text);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-dim);
+    max-width: 600px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-disclaimer {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-left: 2px solid var(--border);
+    padding-left: 16px;
+    max-width: 480px;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-disclaimer span { color: var(--accent); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.2s forwards;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--text-muted);
+  }
+
+  section {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 200px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+
+  .about-text h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .about-text p {
+    color: var(--text-dim);
+    font-size: 15px;
+    margin-bottom: 16px;
+    line-height: 1.8;
+  }
+
+  .about-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .stat-card:hover { border-color: var(--accent); }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .stat-card:hover::before { opacity: 1; }
+
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-size: 42px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .work-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+  }
+
+  .work-card:hover {
+    border-color: var(--accent);
+    background: var(--surface2);
+    transform: translateY(-2px);
+  }
+
+  .work-card-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .work-card h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .work-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .work-card-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 3px 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .work-card-featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .work-card-featured .outcome-box {
+    background: var(--accent-dim);
+    border: 1px solid rgba(169,143,212,0.2);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+
+  .outcome-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .outcome-row:last-child { border-bottom: none; }
+  .outcome-row .label { color: var(--text-muted); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+  .outcome-row .value { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: var(--accent); }
+  .outcome-row .value.good { color: var(--green); }
+  .outcome-row .value.bad { color: var(--red); }
+
+  .builds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .build-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: border-color 0.2s;
+  }
+
+  .build-card:hover { border-color: var(--accent); }
+
+  .build-icon {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .build-card h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .build-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .contact-section {
+    text-align: center;
+    padding: 100px 48px;
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-section h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 900;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+
+  .contact-section h2 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .contact-section p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 40px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 24px;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .contact-link.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    font-weight: 500;
+  }
+
+  .contact-link.primary:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+
+  footer {
+    padding: 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  footer .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    section { padding: 60px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .work-grid { grid-template-columns: 1fr; }
+    .work-card-featured { grid-template-columns: 1fr; }
+    .builds-grid { grid-template-columns: 1fr 1fr; }
+    .contact-section { padding: 60px 24px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media print {
+    body::before { display: none; }
+    nav { display: none; }
+    .hero-scroll { display: none; }
+    .hero { min-height: 0 !important; height: auto !important; padding: 20px 32px 20px; }
+    section { padding: 32px; }
+    .contact-section { padding: 32px; }
+    footer { display: none; }
+    .reveal { opacity: 1; transform: none; }
+    .work-card:hover { transform: none; }
+    * { animation: none !important; transition: none !important; }
+    body { background: white; color: #1a1a1a; }
+    .stat-card, .work-card, .build-card, .skill-group { background: #f5f5f5; border-color: #ddd; }
+    .outcome-box { background: #f0f0f0; border-color: #ccc; }
+    .about-text p, .work-card p, .build-card p { color: #333; }
+    .stat-label, .work-card-tag, .section-label, .hero-tag, .hero-disclaimer, .build-card p { color: #555; }
+    .stat-number, .hero-name em, .about-text h2 em, .contact-section h2 em { color: #6633aa; }
+    .work-card h3, .build-card h4, .about-text h2 { color: #1a1a1a; }
+    nav, .hero-scroll { display: none; }
+    .work-card-featured { grid-template-columns: 1fr 1fr; }
+    .about-grid { grid-template-columns: 1fr 1fr; }
+    .builds-grid { grid-template-columns: repeat(3, 1fr); }
+    .outcome-row .value.good { color: #2a7a4a; }
+    .outcome-row .value.bad { color: #aa3333; }
+    .outcome-row .label { color: #666; }
+    .tag { background: #eee; border-color: #ccc; color: #555; }
+    .nav-logo { color: #6633aa; }
+    a { color: #6633aa; }
+  }
+
+  .skills-grid-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .skill-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color 0.2s;
+  }
+
+  .skill-block:hover { border-color: var(--accent); }
+
+  .skill-block h4 {
+    font-family: "Fraunces", serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .skill-block p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  .different-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .different-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: border-color 0.2s;
+  }
+
+  .different-card:hover { border-color: var(--accent); }
+
+  .different-card h3 {
+    font-family: "Fraunces", serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .different-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 768px) {
+    .skills-grid-section { grid-template-columns: 1fr; }
+    .different-grid { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">D. Cappillo</a>
+</nav>
+
+<section class="hero">
+  <p class="hero-tag">Educator  ·Researcher · Program Evaluator · Problem Solver</p>
+  <h1 class="hero-name">Derek<br><em>Cappillo</em></h1>
+  <p class="hero-subtitle">I analyze data, evaluate programs, implement curriculum, and solve problems. Fifteen years of turning messy information into STEM decisions that actually matter. Getting to an answer is easy. The WHY behind it is where things get interesting.</p>
+  <p class="hero-disclaimer">
+    B.A. Pure Mathematics · M.Ed. Evaluation and Measurement · NASA<br>
+    <span>Currently: teaching mathematics in Harford County, MD.</span><br>
+    Next: Bringing research, evaluation, and coaching to an organization rethinking how people actually learn in 2026.
+  </p>
+  <p class="hero-scroll">Scroll to see more</p>
+</section>
+
+<section id="about">
+  <p class="section-label reveal">About</p>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <h2>I make complicated things make sense.</h2>
+      <p>My background is an unlikely combination of mathematics, federal program evaluation, and over a decade in classrooms where I had to make complex things make sense to people who were not convinced they needed to understand them. That last skill turns out to be useful everywhere.</p>
+      <p>At NASA Glenn Research Center I ran mixed-methods evaluations of national STEM programs. I designed research instruments, conducted focus groups and interviews, coded qualitative data in NVivo, and synthesized findings into reports that went to senior government leadership. I wanted to understand what people actually experienced, where the friction was, and what needed to change.</p>
+      <p>I hold a B.A. in Pure Mathematics and an M.Ed. in Evaluation and Measurement from Kent State University. I code in Python and have fun in HTML. I build things. I fix things. I figure things out. I am based in Fallston, Maryland and eligible to obtain a Public Trust or Secret clearance.</p>
+    </div>
+    <div class="about-stats reveal">
+      <div class="stat-card">
+        <div class="stat-number">14+</div>
+        <div class="stat-label">Percentile points above state-projected growth, averaged per student since 2020</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Of pilot cohort reached grade-level reading proficiency by end of year. Goal was 80%.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Years designing research, building curriculum, and explaining hard things to skeptical audiences</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <p class="section-label reveal">Featured Work</p>
+  <div class="work-grid">
+
+    <div class="work-card work-card-featured reveal">
+      <div>
+        <p class="work-card-tag">Case Study · 2023-2024</p>
+        <h3>Read-to-Connect: A Cross-Disciplinary Literacy Framework</h3>
+        <p>Designed and led professional development for a cross-disciplinary Community of Practice at Pitt County Schools Early College High School, training teachers across different subjects in shared literacy strategies — highlighting, vocabulary parking lot, and a structured annotation-to-application framework — built to work in any classroom. Coached the team through implementation, then presented the evidence-based results to our local Network Improvement Community. Scored using a custom 1-4 rubric across Summary, Connect, and Apply domains. The results were not subtle.</p>
+        <div class="work-card-meta">
+          <span class="tag">PD Facilitation</span>
+          <span class="tag">Cross-Disciplinary Coaching</span>
+          <span class="tag">NIC Presentation</span>
+          <span class="tag">Evaluation Design</span>
+          <span class="tag">Mixed Methods</span>
+          <span class="tag">COP</span>
+        </div>
+      </div>
+      <div class="outcome-box">
+        <div class="outcome-row">
+          <span class="label">Baseline</span>
+          <span class="value bad">60% below grade level</span>
+        </div>
+        <div class="outcome-row">
+          <span class="label">Goal</span>
+          <span class="value">80% on grade level</span>
+        </div>
+        <div class="outcome-row">
+          <span class="label">Actual Result</span>
+          <span class="value good">100% on grade level</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="work-card reveal">
+      <p class="work-card-tag">Federal Evaluation · 2016</p>
+      <h3>National STEM Program Evaluation — NASA Glenn Research Center</h3>
+      <p>Served on a federal evaluation team assessing national STEM programs. Designed research instruments, facilitated focus groups and interviews, applied the Pear Institute 12 Dimensions of Success rubric, coded qualitative data in NVivo, and synthesized findings for senior NASA leadership. Classic question: is this program actually working, and how do we know?</p>
+      <div class="work-card-meta">
+        <span class="tag">Qualitative Research</span>
+        <span class="tag">NVivo</span>
+        <span class="tag">Federal Program</span>
+        <span class="tag">Mixed Methods</span>
+      </div>
+    </div>
+
+    <div class="work-card reveal">
+      <p class="work-card-tag">Curriculum Design · 2018-2026</p>
+      <h3>NC Math III — Built From Nothing</h3>
+      <p>Assigned to teach a course covering algebra II, geometry, trigonometry, and statistics simultaneously. Provided: a list of standards. Not provided: a textbook, resources, or a roadmap. Built the entire curriculum from scratch. Students achieved greater than 95% proficiency since 2020. Students consistently met or exceeded state performance projections.</p>
+      <div class="work-card-meta">
+        <span class="tag">Curriculum Design</span>
+        <span class="tag">Data Analysis</span>
+        <span class="tag">Outcome Tracking</span>
+      </div>
+    </div>
+
+  </div>
+
+<div class="work-card work-card-featured reveal">
+  <div>
+    <p class="work-card-tag">Independent Build · 2026</p>
+    <h3>Baltiword — A Baltimore-Themed Wordle, Built and Shipped Solo</h3>
+    <p>A six-letter Wordle-like game built in React/Vite, deployed live, with a Baltimore proper noun answer pool, deterministic daily word seeding, hints, colorblind mode, and a 19,000-word valid guess list. Pitching to Baltimore Fish Bowl for local promotion.</p>
+    <div class="work-card-meta">
+      <span class="tag">React</span>
+      <span class="tag">Vite</span>
+      <span class="tag">Product Design</span>
+      <span class="tag">Local Partnership</span>
+    </div>
+  </div>
+  <div class="outcome-box">
+    <div class="outcome-row">
+      <span class="label">Word Length</span>
+      <span class="value">Six letters</span>
+    </div>
+    <div class="outcome-row">
+      <span class="label">Guess List</span>
+      <span class="value">19,000 words</span>
+    </div>
+    <div class="outcome-row">
+      <span class="label">Status</span>
+      <span class="value good">Live, shipped solo</span>
+    </div>
+  </div>
+</div>
+
+<div class="work-card work-card-featured reveal">
+  <div>
+    <p class="work-card-tag">Independent Build · 2026</p>
+    <h3>CapFootball — A Football GM Sim, Refactored Out of a Single File</h3>
+    <p>Started as a single ~19,000-line HTML file, because that's how these things always start. Rebuilt it into 70 numbered source files stitched together by a custom Node.js build script — deliberately skipping ES modules to preserve the global scope the game's onclick handlers depend on. What runs on top: a full 32-team GM simulation with weekly game sim, roster and depth chart management, free agency, a live draft, trade logic, coaching staff, injuries, and season-long stat tracking. Built and debugged solo, including chasing down a null-coach crash affectionately known internally as the Black Monday bug.</p>
+    <div class="work-card-meta">
+      <span class="tag">JavaScript</span>
+      <span class="tag">Custom Build Tooling</span>
+      <span class="tag">Systems Design</span>
+      <span class="tag">Solo Debugging</span>
+    </div>
+  </div>
+  <div class="outcome-box">
+    <div class="outcome-row">
+      <span class="label">Started As</span>
+      <span class="value bad">1 monolithic file</span>
+    </div>
+    <div class="outcome-row">
+      <span class="label">Refactored To</span>
+      <span class="value">70 source files, custom build</span>
+    </div>
+    <div class="outcome-row">
+      <span class="label">Scope</span>
+      <span class="value good">Full 32-team league sim</span>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label reveal">Skills and Expertise</p>
+  <div class="skills-grid-section reveal">
+
+    <div class="skill-block">
+      <h4>Data Analysis and Statistics</h4>
+      <p>Statistical analysis (descriptive, inferential, regression, multivariate) · Data visualization · Performance metrics tracking · Trend analysis · Survey design and analysis · Quantitative and qualitative research methods · SPSS · Python · Excel (advanced) · Tableau</p>
+    </div>
+
+    <div class="skill-block">
+      <h4>Program Evaluation</h4>
+      <p>Needs assessment and gap analysis · Program effectiveness evaluation · Impact measurement and outcome tracking · Assessment design and validation · Evidence-based recommendations · Stakeholder reporting · Mixed-methods evaluation design</p>
+    </div>
+
+    <div class="skill-block">
+      <h4>STEM and Training</h4>
+      <p>Curriculum design and development · Training material creation · Translating technical concepts for non-technical audiences · Learning assessment design · Professional development facilitation · Federal STEM program coordination</p>
+    </div>
+
+    <div class="skill-block">
+      <h4>Communication and Coordination</h4>
+      <p>Executive briefings and stakeholder presentations · Technical report writing · Cross-functional team collaboration · Project and timeline management · Explaining complex findings to any audience · NVivo · SharePoint · Google Suite</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="builds">
+  <p class="section-label reveal">Things I Built Because I Wanted To</p>
+  <div class="builds-grid">
+    <div class="build-card reveal">
+      <div class="build-icon">🎮</div>
+      <h4>Raspberry Pi Gameboy</h4>
+      <p>Installed a Raspberry Pi 2 inside an original 1989 Gameboy case. Soldered wires. Coded inputs to pins. Modded the screen for a modern backlit display. Got it running as a functional emulator. No tutorial. No deadline. Just a problem worth solving. This was before AI could baby-step anyone through a project like this.</p>
+    </div>
+    <div class="build-card reveal">
+      <div class="build-icon">🕹️</div>
+      <h4>Microcontroller Fun</h4>
+      <p>Programmed an Arduino board into a fully functional arcade joystick gamepad. Built custom smart home devices using ESP32 microcontrollers. The ESP32 is genuinely a remarkable little chip and costs about four dollars.</p>
+    </div>
+    <div class="build-card reveal">
+      <div class="build-icon">⚡</div>
+      <h4>DIY Charging Systems</h4>
+      <p>I've repurposed solar panels from dollar store products to charge lithium batteries. They work and they were free because I was salvaging old lithium batteries and broken solar lights. I've also taken salvaged lithium batteries and built custom charging modules using TP4056 boards. Both involved more soldering than most people are comfortable with, but end up fitting my needs nicely.</p>
+    </div>
+    <div class="build-card reveal">
+      <div class="build-icon">🔧</div>
+      <h4>Console Repair and Flip</h4>
+      <p>Diagnosed, repaired, and resold PS4 and Xbox One units. Sourced replacement components independently. Turns out a lot of console failures are boring and easily fixable if you are willing to open the thing up.</p>
+    </div>
+    <div class="build-card reveal">
+      <div class="build-icon">🧩</div>
+      <h4>4rdle — Wordle Combinatorics App</h4>
+      <p>Built a browser-based application to find all valid N-word unique-letter sets from the Wordle word list. Culminated in identifying the optimal 4-word opening sequence by positional frequency score. Yes this is the kind of thing I do for fun.</p>
+    </div>
+    <div class="build-card reveal">
+      <div class="build-icon">🤖</div>
+      <h4>AI Fluency</h4>
+      <p>Not a passive user. I build with AI, prompt with precision, and understand what is actually happening under the hood. I use it as a force multiplier for research, writing, data analysis, and problem solving. I built this website with it, run Stable Diffusion and Ollama locally on my own machine, and have used it to accelerate everything from combinatorics projects to curriculum design. I know when to use it, how to use it well, and its limitations. </p>
+    </div>
+    <div class="build-card reveal">
+      <div class="build-icon">💻</div>
+      <h4>Computer Fluency</h4>
+      <p>Built every personal desktop from components, customized to my wants and needs. On the software side, most of my project work has been in Python and HTML, but give me a terminal and I can figure out where I am.</p>
+    </div>
+<div class="build-card reveal">
+  <div class="build-icon">🏈</div>
+  <h4>Roster Validator</h4>
+  <p>A companion tool for CapFootball that cross-references player names against a live Sleeper API database before roster and draft data ever loads into the game. Catches bad matches and formatting errors before they become bugs in the sim.</p>
+</div>
+<div class="build-card reveal">
+  <div class="build-icon">📦</div>
+  <h4>Cap'n Cappy's Goods — eBay Store</h4>
+  <p>Built and run an eBay store from scratch selling household items, books, and trading cards. $5,700+ in sales in the first 90 days. 280 items sold with 100% positive buyer feedback. Sourcing, pricing, listing, and shipping logistics, all self-managed.</p>
+</div>
+  </div>
+</section>
+
+
+<!-- WHAT MAKES ME DIFFERENT -->
+<section id="different">
+  <p class="section-label reveal">What Makes Me Different</p>
+  <div class="different-grid reveal">
+    <div class="different-card">
+      <h3>I understand the math AND the real world.</h3>
+      <p>I can explain why you would check variance against baseline instead of just looking at means. I know when a correlation does not mean causation. I can design a study that actually measures what you care about, not just what is easy to measure. And I can explain technical findings to non-technical people without dumbing it down or losing important details.</p>
+    </div>
+    <div class="different-card">
+      <h3>I have been in the room with everyone.</h3>
+      <p>Federal agencies, school districts, university departments, and state officials. I know how to navigate bureaucracy, work with different stakeholder groups, and deliver what is needed even when requirements keep changing. I have briefed NASA leadership, led professional development for educators as part of NASA's national STEM programs, and coached a cross-disciplinary team of teachers through a new literacy framework as a program lead at Pitt County Schools Early College High School. I have taught middle schoolers, high schoolers, early college students, and adults of all ages at the college level. 
+</p>
+    </div>
+    <div class="different-card">
+      <h3>I care about getting it right.</h3>
+      <p>I am the person who digs into the data to find out why something is not working, asks the questions nobody else thought to ask, and figures out solutions that actually solve the problem instead of just looking good on paper. If there is a gap in my knowledge or skills, I overcome it by actually learning and growing. My mentality has always been to just figure it out.</p>
+    </div>
+  </div>
+</section>
+
+<div class="contact-section">
+  <h2 id="contact">Let's talk about a <em>hard problem.</em></h2>
+  <p>Fallston, MD · Available for remote, hybrid, and local roles · Clearance eligible</p>
+  <div class="contact-links">
+    <a href="mailto:Derek.Cappillo@gmail.com" class="contact-link primary">Derek.Cappillo@gmail.com</a>
+    <a href="https://linkedin.com/in/derek-cappillo-66a445109" class="contact-link" target="_blank">LinkedIn</a>
+    <a href="resume.pdf" class="contact-link" target="_blank">Resume</a>
+    <a href="https://drive.google.com/file/d/1vn0qlP-Ur9lddSxz8br_YhUzOo_-wCp7/view?usp=sharing" class="contact-link" target="_blank">Case Study PDF</a>
+    <a href="https://sites.google.com/view/4rdle/home" class="contact-link" target="_blank">4rdle</a>
+    <a href="https://delightful-hummingbird-44c8e8.netlify.app/" target="_blank" class="contact-link">Baltiword (Live Demo)</a>
+<a href="https://luminous-begonia-f68904.netlify.app/" target="_blank" class="contact-link">CapFootball (Live Demo)</a>
+<a href="https://www.ebay.com/str/capncappysgoods" target="_blank" class="contact-link">eBay Store</a>
+  </div>
+</div>
+
+<footer>
+  <p>Derek Cappillo · Fallston, MD · 2026</p>
+  <p class="footer-note">Built with ClaudeAI, Coffee, and ADHD Hyperfocus.</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
