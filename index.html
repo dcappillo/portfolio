@@ -808,13 +808,13 @@
 <div class="work-card work-card-featured reveal">
   <div>
     <p class="work-card-tag">Independent Build · 2026</p>
-    <h3>CapFootball: A Football GM Sim, Refactored Out of a Single File</h3>
-    <p>Started as a single ~19,000-line HTML file, because that's how these things always start. Rebuilt it into 70 numbered source files stitched together by a custom Node.js build script, deliberately skipping ES modules to preserve the global scope the game's onclick handlers depend on. What runs on top: a full 32-team GM simulation with weekly game sim, roster and depth chart management, free agency, a live draft, trade logic, coaching staff, injuries, and season-long stat tracking. Built and debugged solo, including chasing down a null-coach crash affectionately known internally as the Black Monday bug.</p>
+    <h3>CapFootball: A Football GM Sim, Refactored and Tested</h3>
+    <p>Started as a single ~19,000-line HTML file, because that's how these things always start. Rebuilt it into 66 source files organized by system, with an esbuild pipeline and a headless test suite that plays full seasons from a fixed random seed, so the same league comes out every time and a change that breaks the game fails the build. Then I played it like someone trying to break it. That turned up $1 contracts, signings that skipped the salary cap, an end-of-season step that ran twice and aged the whole league, and an offseason bug that quietly deleted hundreds of players a year. All fixed, plus the original crash affectionately known as the Black Monday bug. A balance test now plays ten seasons and fails if ratings drift or the league stops carrying 20 to 40 elite players. <a href="https://github.com/dcappillo/Dcap-Football" target="_blank" style="color: var(--accent);">Code on GitHub.</a></p>
     <div class="work-card-meta">
       <span class="tag">JavaScript</span>
-      <span class="tag">Custom Build Tooling</span>
+      <span class="tag">Automated Testing</span>
       <span class="tag">Systems Design</span>
-      <span class="tag">Solo Debugging</span>
+      <span class="tag">Simulation Balancing</span>
     </div>
   </div>
   <div class="outcome-box">
@@ -824,7 +824,7 @@
     </div>
     <div class="outcome-row">
       <span class="label">Refactored To</span>
-      <span class="value">70 source files, custom build</span>
+      <span class="value">66 files, tested build</span>
     </div>
     <div class="outcome-row">
       <span class="label">Scope</span>
