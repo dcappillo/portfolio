@@ -723,6 +723,62 @@
 
 <div class="work-card work-card-featured reveal">
   <div>
+    <p class="work-card-tag">Data Pipeline · 2026</p>
+    <h3>Capjobs: A Job Search, Treated as a Data Problem</h3>
+    <p>Job boards are built to keep you scrolling. I wanted a ranked list. So I wrote a Python pipeline that pulls listings from the Adzuna and USAJobs APIs, runs local and remote searches for every keyword, drops exclusions and duplicates, flags anything that needs an active clearance or hangs on a contract award, scores what's left against weighted keywords, and writes one sorted CSV. The rules live in a config file, so the search changes without touching the code. <a href="https://github.com/dcappillo/Capjobs" target="_blank" style="color: var(--accent);">Code on GitHub.</a></p>
+    <div class="work-card-meta">
+      <span class="tag">Python</span>
+      <span class="tag">REST APIs</span>
+      <span class="tag">Data Cleaning</span>
+      <span class="tag">Relevance Scoring</span>
+    </div>
+  </div>
+  <div class="outcome-box">
+    <div class="outcome-row">
+      <span class="label">Sources</span>
+      <span class="value">2 public APIs</span>
+    </div>
+    <div class="outcome-row">
+      <span class="label">Searches Per Keyword</span>
+      <span class="value">4, local and remote</span>
+    </div>
+    <div class="outcome-row">
+      <span class="label">Output</span>
+      <span class="value good">One ranked, flagged CSV</span>
+    </div>
+  </div>
+</div>
+
+<div class="work-card work-card-featured reveal">
+  <div>
+    <p class="work-card-tag">Analysis · 2026</p>
+    <h3>4rdle: Which Wordle Opener Is Actually Best?</h3>
+    <p>It started as a question about my own four-word Wordle opener. First I built a browser tool that finds every set of words with no repeated letters, using bitmasks and Web Workers: 25,456,119 four-word sets from the full word list. Then I scored openers against the 2,315 answers in Python. Letter coverage turned out to be a blunt instrument, because 1,247 sets tie for the maximum. Counting letters that land in the right position breaks the tie, and my own opener ranks 1,172 of those 1,247. I still play it. <a href="https://github.com/dcappillo/4rdle" target="_blank" style="color: var(--accent);">Code and write-up on GitHub.</a></p>
+    <div class="work-card-meta">
+      <span class="tag">Combinatorics</span>
+      <span class="tag">Python</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Web Workers</span>
+    </div>
+  </div>
+  <div class="outcome-box">
+    <div class="outcome-row">
+      <span class="label">Four-Word Sets Found</span>
+      <span class="value">25,456,119</span>
+    </div>
+    <div class="outcome-row">
+      <span class="label">Tied on Coverage</span>
+      <span class="value">1,247 sets</span>
+    </div>
+    <div class="outcome-row">
+      <span class="label">My Own Opener</span>
+      <span class="value bad">Rank 1,172 of 1,247</span>
+    </div>
+  </div>
+</div>
+
+<div class="work-card work-card-featured reveal">
+  <div>
     <p class="work-card-tag">Independent Build · 2026</p>
     <h3>Baltiword: A Baltimore-Themed Wordle, Built and Shipped Solo</h3>
     <p>A six-letter Wordle-like game built in React/Vite, deployed live, with a Baltimore proper noun answer pool, deterministic daily word seeding, hints, colorblind mode, and a 19,000-word valid guess list. Pitching to Baltimore Fish Bowl for local promotion.</p>
@@ -829,11 +885,6 @@
       <div class="build-icon">🔧</div>
       <h4>Console Repair and Flip</h4>
       <p>Diagnosed, repaired, and resold PS4 and Xbox One units. Sourced replacement components independently. Turns out a lot of console failures are boring and easily fixable if you are willing to open the thing up.</p>
-    </div>
-    <div class="build-card reveal">
-      <div class="build-icon">🧩</div>
-      <h4>4rdle: Wordle Combinatorics App</h4>
-      <p>Built a browser-based application to find all valid N-word unique-letter sets from the Wordle word list. Culminated in identifying the optimal 4-word opening sequence by positional frequency score. Yes this is the kind of thing I do for fun.</p>
     </div>
     <div class="build-card reveal">
       <div class="build-icon">🤖</div>
