@@ -724,90 +724,6 @@
 <div class="work-card work-card-featured reveal">
   <div>
     <p class="work-card-tag">Independent Build · 2026</p>
-    <h3>Olympus: An AI Agent Team That Has to Show Its Work</h3>
-    <p>I run my own JARVIS on Hermes Agent, and I gave it one rule I wish more people followed: no claim counts without evidence. Every task gets sorted into a tier. Quick lookups get a straight answer. Anything bigger runs through a pipeline of single-job "hats" named after Greek gods: Athena plans, Atlas researches, Aletheia fact-checks, Monus guards the rules, Hephaestus builds, Argus reviews, and Iris delivers. Every pass writes to an append-only log, a script audits that log before anything ships, and no hat is allowed to check work made on its own engine. It runs on rotating free models with a backup for every seat, and it keeps a notebook of its own mistakes that it reads before every new job. Then I built an interactive diagram of the whole thing, where each hat reads its job out loud. <a href="https://cappillolympus.netlify.app/" target="_blank" style="color: var(--accent);">Explore the interactive diagram.</a></p>
-    <div class="work-card-meta">
-      <span class="tag">Agentic AI</span>
-      <span class="tag">Multi-Model Orchestration</span>
-      <span class="tag">Verification Design</span>
-      <span class="tag">Local LLMs</span>
-    </div>
-  </div>
-  <div class="outcome-box">
-    <div class="outcome-row">
-      <span class="label">Roles</span>
-      <span class="value">14 hats, one job each</span>
-    </div>
-    <div class="outcome-row">
-      <span class="label">Engines</span>
-      <span class="value">8 model families, backup per seat</span>
-    </div>
-    <div class="outcome-row">
-      <span class="label">House Rule</span>
-      <span class="value good">No evidence = FAIL</span>
-    </div>
-  </div>
-</div>
-
-<div class="work-card work-card-featured reveal">
-  <div>
-    <p class="work-card-tag">Data Pipeline · 2026</p>
-    <h3>Capjobs: A Job Search, Treated as a Data Problem</h3>
-    <p>Job boards are built to keep you scrolling. I wanted a ranked list. So I wrote a Python pipeline that pulls listings from the Adzuna and USAJobs APIs, runs local and remote searches for every keyword, drops exclusions and duplicates, flags anything that needs an active clearance or hangs on a contract award, scores what's left against weighted keywords, and writes one sorted CSV. The rules live in a config file, so the search changes without touching the code. <a href="https://github.com/dcappillo/Capjobs" target="_blank" style="color: var(--accent);">Code on GitHub.</a></p>
-    <div class="work-card-meta">
-      <span class="tag">Python</span>
-      <span class="tag">REST APIs</span>
-      <span class="tag">Data Cleaning</span>
-      <span class="tag">Relevance Scoring</span>
-    </div>
-  </div>
-  <div class="outcome-box">
-    <div class="outcome-row">
-      <span class="label">Sources</span>
-      <span class="value">2 public APIs</span>
-    </div>
-    <div class="outcome-row">
-      <span class="label">Searches Per Keyword</span>
-      <span class="value">4, local and remote</span>
-    </div>
-    <div class="outcome-row">
-      <span class="label">Output</span>
-      <span class="value good">One ranked, flagged CSV</span>
-    </div>
-  </div>
-</div>
-
-<div class="work-card work-card-featured reveal">
-  <div>
-    <p class="work-card-tag">Analysis · 2026</p>
-    <h3>4rdle: Which Wordle Opener Is Actually Best?</h3>
-    <p>It started as a question about my own four-word Wordle opener. First I built a browser tool that finds every set of words with no repeated letters, using bitmasks and Web Workers: 25,456,119 four-word sets from the full word list. Then I scored openers against the 2,315 answers in Python. Letter coverage turned out to be a blunt instrument, because 1,247 sets tie for the maximum. Counting letters that land in the right position breaks the tie, and my own opener ranks 1,172 of those 1,247. I still play it. <a href="https://github.com/dcappillo/4rdle" target="_blank" style="color: var(--accent);">Code and write-up on GitHub.</a></p>
-    <div class="work-card-meta">
-      <span class="tag">Combinatorics</span>
-      <span class="tag">Python</span>
-      <span class="tag">JavaScript</span>
-      <span class="tag">Web Workers</span>
-    </div>
-  </div>
-  <div class="outcome-box">
-    <div class="outcome-row">
-      <span class="label">Four-Word Sets Found</span>
-      <span class="value">25,456,119</span>
-    </div>
-    <div class="outcome-row">
-      <span class="label">Tied on Coverage</span>
-      <span class="value">1,247 sets</span>
-    </div>
-    <div class="outcome-row">
-      <span class="label">My Own Opener</span>
-      <span class="value bad">Rank 1,172 of 1,247</span>
-    </div>
-  </div>
-</div>
-
-<div class="work-card work-card-featured reveal">
-  <div>
-    <p class="work-card-tag">Independent Build · 2026</p>
     <h3>Baltiword: A Baltimore-Themed Wordle, Built and Shipped Solo</h3>
     <p>A six-letter Wordle-like game built in React/Vite, deployed live, with a Baltimore proper noun answer pool, deterministic daily word seeding, hints, colorblind mode, and a 19,000-word valid guess list. Pitching to Baltimore Fish Bowl for local promotion.</p>
     <div class="work-card-meta">
@@ -836,13 +752,13 @@
 <div class="work-card work-card-featured reveal">
   <div>
     <p class="work-card-tag">Independent Build · 2026</p>
-    <h3>CapFootball: A Football GM Sim, Refactored and Tested</h3>
-    <p>Started as a single ~19,000-line HTML file, because that's how these things always start. Rebuilt it into 66 source files organized by system, with an esbuild pipeline and a headless test suite that plays full seasons from a fixed random seed, so the same league comes out every time and a change that breaks the game fails the build. Then I played it like someone trying to break it. That turned up $1 contracts, signings that skipped the salary cap, an end-of-season step that ran twice and aged the whole league, and an offseason bug that quietly deleted hundreds of players a year. All fixed, plus the original crash affectionately known as the Black Monday bug. A balance test now plays ten seasons and fails if ratings drift or the league stops carrying 20 to 40 elite players. <a href="https://github.com/dcappillo/Dcap-Football" target="_blank" style="color: var(--accent);">Code on GitHub.</a></p>
+    <h3>CapFootball: A Football GM Sim, Refactored Out of a Single File</h3>
+    <p>Started as a single ~19,000-line HTML file, because that's how these things always start. Rebuilt it into 70 numbered source files stitched together by a custom Node.js build script, deliberately skipping ES modules to preserve the global scope the game's onclick handlers depend on. What runs on top: a full 32-team GM simulation with weekly game sim, roster and depth chart management, free agency, a live draft, trade logic, coaching staff, injuries, and season-long stat tracking. Built and debugged solo, including chasing down a null-coach crash affectionately known internally as the Black Monday bug.</p>
     <div class="work-card-meta">
       <span class="tag">JavaScript</span>
-      <span class="tag">Automated Testing</span>
+      <span class="tag">Custom Build Tooling</span>
       <span class="tag">Systems Design</span>
-      <span class="tag">Simulation Balancing</span>
+      <span class="tag">Solo Debugging</span>
     </div>
   </div>
   <div class="outcome-box">
@@ -852,7 +768,7 @@
     </div>
     <div class="outcome-row">
       <span class="label">Refactored To</span>
-      <span class="value">66 files, tested build</span>
+      <span class="value">70 source files, custom build</span>
     </div>
     <div class="outcome-row">
       <span class="label">Scope</span>
@@ -915,9 +831,14 @@
       <p>Diagnosed, repaired, and resold PS4 and Xbox One units. Sourced replacement components independently. Turns out a lot of console failures are boring and easily fixable if you are willing to open the thing up.</p>
     </div>
     <div class="build-card reveal">
+      <div class="build-icon">🧩</div>
+      <h4>4rdle: Wordle Combinatorics App</h4>
+      <p>Built a browser-based application to find all valid N-word unique-letter sets from the Wordle word list. Culminated in identifying the optimal 4-word opening sequence by positional frequency score. Yes this is the kind of thing I do for fun.</p>
+    </div>
+    <div class="build-card reveal">
       <div class="build-icon">🤖</div>
       <h4>AI Fluency</h4>
-      <p>Not a passive user. I build with AI, prompt with precision, and understand what is actually happening under the hood. I use it as a force multiplier for research, writing, data analysis, and problem solving. I built this website with it, run Stable Diffusion and Ollama locally on my own machine, and have used it to accelerate everything from combinatorics projects to curriculum design. I also built my own JARVIS: a Hermes agent that routes work across eight model families and makes every agent show evidence. That's Olympus, up in Featured Work. I know when to use it, how to use it well, and its limitations. </p>
+      <p>Not a passive user. I build with AI, prompt with precision, and understand what is actually happening under the hood. I use it as a force multiplier for research, writing, data analysis, and problem solving. I built this website with it, run Stable Diffusion and Ollama locally on my own machine, and have used it to accelerate everything from combinatorics projects to curriculum design. I know when to use it, how to use it well, and its limitations. </p>
     </div>
     <div class="build-card reveal">
       <div class="build-icon">💻</div>
@@ -962,14 +883,14 @@
   <h2 id="contact">Let's talk about a <em>hard problem.</em></h2>
   <p>Fallston, MD · Available for remote, hybrid, and local roles · Clearance eligible</p>
   <div class="contact-links">
-    <a href="https://linkedin.com/in/derek-cappillo-66a445109" class="contact-link primary" target="_blank">LinkedIn</a>
+    <a href="mailto:Derek.Cappillo@gmail.com" class="contact-link primary">Derek.Cappillo@gmail.com</a>
+    <a href="https://linkedin.com/in/derek-cappillo-66a445109" class="contact-link" target="_blank">LinkedIn</a>
     <a href="https://github.com/dcappillo" class="contact-link" target="_blank">GitHub</a>
     <a href="resume.pdf" class="contact-link" target="_blank">Resume</a>
     <a href="https://drive.google.com/file/d/1vn0qlP-Ur9lddSxz8br_YhUzOo_-wCp7/view?usp=sharing" class="contact-link" target="_blank">Case Study PDF</a>
-    <a href="https://sites.google.com/view/4rdle/home" class="contact-link" target="_blank">4rdle</a>
+    <a href="https://4rdle.netlify.app/" class="contact-link" target="_blank">4rdle (Live Demo)</a>
     <a href="https://delightful-hummingbird-44c8e8.netlify.app/" target="_blank" class="contact-link">Baltiword (Live Demo)</a>
 <a href="https://luminous-begonia-f68904.netlify.app/" target="_blank" class="contact-link">CapFootball (Live Demo)</a>
-<a href="https://cappillolympus.netlify.app/" target="_blank" class="contact-link">Olympus (Interactive Diagram)</a>
 <a href="https://www.ebay.com/str/capncappysgoods" target="_blank" class="contact-link">eBay Store</a>
   </div>
 </div>
